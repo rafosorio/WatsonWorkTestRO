@@ -1,0 +1,6 @@
+---
+applications:
+- name: iww-dev-course-sl
+  memory: 128M
+  host: iww-dev-course-sl
+  domain: eu-gb.mybluemix.net

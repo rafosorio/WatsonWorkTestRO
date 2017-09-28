@@ -7,9 +7,9 @@ var bodyParser = require("body-parser");
 var request = require("request");
 var requestjs = require("request-json");
 
-var APP_ID = "c73a76ec-967e-46fe-9172-86960eadab74";
-var APP_SECRET = "2axyimvdo3vvravo6wnlpr4viwxn6134";
-var SPACE_ID = "589b316de4b062602d9ab05b";
+var APP_ID = "a94753f5-c064-4d69-9ee9-f32418a8039f";
+var APP_SECRET = "4UZLpTis-Xv0VpUc51XY5GdU1i89";
+var SPACE_ID = "5819247fe4b0f51d493732c3";
 
 // --------------------------------------------------------------------------
 // Setup global variables
@@ -18,7 +18,7 @@ var SPACE_ID = "589b316de4b062602d9ab05b";
 // Workspace API Setup - fixed stuff
 const WWS_URL = "https://api.watsonwork.ibm.com";
 const AUTHORIZATION_API = "/oauth/token";
-const OAUTH_ENDPOINT = "/oauth/authorize";
+
 
 // --------------------------------------------------------------------------
 // Setup the express server
@@ -36,7 +36,7 @@ var jsonParser = bodyParser.json();
 // --------------------------------------------------------------------------
 // Start our server !
 app.listen(process.env.PORT || 3000, function() {
-    console.log("INFO: app is listening on port %s", (process.env.PORT || 3000));
+    console.log("INFO: app is listening on port %s", process.env.PORT || 3000);
 });
 
 // --------------------------------------------------------------------------
@@ -56,8 +56,8 @@ app.post("/test-message", jsonParser, function(req, res) {
             } else {
                 res.status(500).end();
             }
-        })
-    })
+        });
+    });
 
 });
 
@@ -78,7 +78,7 @@ function getJWTToken(userid, password, callback) {
     };
 
     // Get the JWT Token
-    request(authenticationOptions, function(err, response, authenticationBody) {
+    request(authenticationOptions, function(response, authenticationBody) {
 
         // If successful authentication, a 200 response code is returned
         if (response.statusCode !== 200) {
@@ -122,7 +122,7 @@ function postMessageToSpace(spaceId, accessToken, textMsg, callback) {
     // Calling IWW API to post message
     console.log("Message body : %s", JSON.stringify(messageData));
 
-    jsonClient.post(urlToPostMessage, messageData, function(err, jsonRes, jsonBody) {
+    jsonClient.post(urlToPostMessage, messageData, function(jsonRes, jsonBody) {
         if (jsonRes.statusCode === 201) {
             console.log("Message posted to IBM Watson Workspace successfully!");
             callback(true);

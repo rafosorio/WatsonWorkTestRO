@@ -1,6 +1,6 @@
 ---
 applications:
-- name: iww-dev-course-sl
+- name: watsonworktestro
   memory: 128M
-  host: iww-dev-course-sl
-  domain: eu-gb.mybluemix.net
+  host: watsonworktestro
+  domain: mybluemix.net

@@ -36,7 +36,7 @@ var jsonParser = bodyParser.json();
 // --------------------------------------------------------------------------
 // Start our server !
 app.listen(process.env.PORT || 3000, function() {
-    console.log("INFO: app is listening on port %s", process.env.PORT || 3000);
+    console.log("INFO: rafael app is listening on port %s", process.env.PORT || 3000);
 });
 
 // --------------------------------------------------------------------------
